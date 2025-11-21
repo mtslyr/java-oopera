@@ -19,4 +19,8 @@ public class Ballet extends MusicalShow {
         super(title, durationInMinutes, director, listOfActors, musicAuthor, librettoText);
         this.choreographer = choreographer;
     }
+
+    public Person getChoreographer() {
+        return choreographer;
+    }
 }

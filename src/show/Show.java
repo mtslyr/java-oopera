@@ -44,15 +44,11 @@ public class Show {
     }
 
     public void replaceActor(Actor newActor, String actorToReplaceSurname) {
-        boolean isInActorsList = listOfActors.stream()
-                .anyMatch(actor -> {
-                    return actor.getSurname().equals(actorToReplaceSurname);
-                });
+        boolean wasRemoved = listOfActors.removeIf(actor -> actor.getSurname().equals(actorToReplaceSurname));
 
-        if (!isInActorsList) {
-            System.out.printf("Актер %s не учавствует в представлении %s\n", actorToReplaceSurname, this.title);
+        if (!wasRemoved) {
+            System.out.printf("Актер %s не участвует в представлении %s\n", actorToReplaceSurname, this.title);
         } else {
-            listOfActors.removeIf(actor -> actor.getSurname().equals(actorToReplaceSurname));
             listOfActors.add(newActor);
         }
     }
